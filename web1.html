@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2ab7ca; /* Turquoise */
+            --secondary-color: #4a4a4a; /* Dark gray */
+            --background-color: #f4f4f4; /* Light gray */
+            --accent-color: #fe4a49; /* Coral */
+            --font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        header, footer {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--secondary-color);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .about, .portfolio, .blog, .services, .contact {
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .portfolio-item, .blog-post, .service-item {
+            margin-bottom: 20px;
+        }
+
+        .portfolio-item img, .blog-post img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .portfolio-item h4, .blog-post h4, .service-item h4 {
+            margin: 10px 0 5px 0;
+        }
+
+        .portfolio-item p, .blog-post p, .service-item p {
+            color: #757575;
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>My Portfolio</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>Welcome to my portfolio! I'm a creative professional with a passion for designing innovative solutions. My expertise lies in blending art and technology to craft compelling experiences. Let's build something amazing together!</p>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-item">
+            <img src="https://via.placeholder.com/800x400?text=Project+1" alt="Project 1">
+            <h4>Project 1</h4>
+            <p>An innovative web application that streamlines task management.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://via.placeholder.com/800x400?text=Project+2" alt="Project 2">
+            <h4>Project 2</h4>
+            <p>A mobile app designed to enhance productivity through AI-powered suggestions.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://via.placeholder.com/800x400?text=Project+3" alt="Project 3">
+            <h4>Project 3</h4>
+            <p>A data visualization tool that makes complex data easy to understand.</p>
+        </div>
+    </section>
+
+    <section id="blog" class="blog">
+        <h2>Blog</h2>
+        <div class="blog-post">
+            <img src="https://via.placeholder.com/800x400?text=Blog+Post+1" alt="Blog Post 1">
+            <h4>How to Stay Creative</h4>
+            <p>Discover strategies to maintain creativity and innovation in your daily work.</p>
+        </div>
+        <div class="blog-post">
+            <img src="https://via.placeholder.com/800x400?text=Blog+Post+2" alt="Blog Post 2">
+            <h4>Design Trends for 2024</h4>
+            <p>Explore the latest design trends that are shaping the creative industry.</p>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Services</h2>
+        <div class="service-item">
+            <h4>Web Design</h4>
+            <p>Creating visually appealing and user-friendly web designs tailored to your needs.</p>
+        </div>
+        <div class="service-item">
+            <h4>App Development</h4>
+            <p>Developing innovative mobile applications for both Android and iOS platforms.</p>
+        </div>
+        <div class="service-item">
+            <h4>Consulting</h4>
+            <p>Offering expert advice to help you achieve your business goals efficiently.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Let's work together! Feel free to reach out to me through the following channels:</p>
+        <ul>
+            <li>Email: <a href="mailto:yourname@example.com">yourname@example.com</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile">https://www.linkedin.com/in/yourprofile</a></li>
+            <li>GitHub: <a href="https://github.com/yourusername">https://github.com/yourusername</a></li>
+        </ul>
+        <a href="mailto:yourname@example.com" class="cta">Get in Touch</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
