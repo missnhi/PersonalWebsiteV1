@@ -26,3 +26,15 @@ document.getElementById('contactForm').addEventListener('submit', async function
     // Clear the message field
     document.getElementById('message').value = '';
 });
+
+// Get the textarea element by its ID
+const messageTextarea = document.getElementById('message');
+
+// Add an event listener for the 'input' event
+messageTextarea.addEventListener('input', function(event) {
+    // Log the last character typed to the console
+    const currentValue = event.target.value;
+    const lastCharacter = currentValue[currentValue.length - 1];
+    console.log(lastCharacter);
+});
+
