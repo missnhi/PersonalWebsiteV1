@@ -3,7 +3,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
     const message = document.getElementById('message').value;
 
-    const response = await fetch('/api/sendMessage', {
+    const response = await fetch('/api/sendMessage.js', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -13,5 +13,16 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
     const result = await response.json();
 
-    document.getElementById('feedback').textContent = result.message || result.error;
+    // Display the result in the feedback message box
+    const feedbackMessageBox = document.getElementById('feedbackMessage');
+    if (result.success) {
+        feedbackMessageBox.textContent = 'Message sent successfully!';
+        feedbackMessageBox.style.color = 'green';
+    } else {
+        feedbackMessageBox.textContent = 'Failed to send the message. Please try again.';
+        feedbackMessageBox.style.color = 'red';
+    }
+
+    // Clear the message field
+    document.getElementById('message').value = '';
 });

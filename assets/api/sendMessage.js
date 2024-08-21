@@ -1,10 +1,14 @@
 // api/sendMessage.js
 
+const express = require('express');
 const nodemailer = require('nodemailer');
 
-export default async function (req, res) {
-    if (req.method === 'POST') {
-        const { message } = req.body;
+const app = express();
+app.use(express.json());
+
+// Define the endpoint to handle the form submission
+app.post('/api/contactForm.js', async (req, res) => {
+    const { message } = req.body;
 
         // Access environment variables
         const emailUser = process.env.EMAIL_USER;
@@ -31,8 +35,10 @@ export default async function (req, res) {
         } catch (error) {
             return res.status(500).json({ error: 'Failed to send message. Please try again.' });
         }
-    } else {
-        res.setHeader('Allow', ['POST']);
-        res.status(405).end(`Method ${req.method} Not Allowed`);
-    }
-}
+    });
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
