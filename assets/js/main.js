@@ -30,7 +30,7 @@
 	// Browser fixes.
 
 		// IE: Flexbox min-height bug.
-			if (browser.name == 'ie')
+			if (browser.name === 'ie')
 				(function() {
 
 					var flexboxFixTimeoutId;
