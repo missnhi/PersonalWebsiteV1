@@ -1,7 +1,6 @@
 /*
 SendMessage.js is a serverless function,
 designed to handle HTTP requests and send an email using nodemailer.
-
  */
 
 const nodemailer = require('nodemailer');
@@ -13,6 +12,9 @@ export default async function (req, res) {
         // Access environment variables
         const emailUser = process.env.EMAIL_USER;
         const emailPass = process.env.EMAIL_PASS;
+
+        //error
+        console.log(emailUser, emailPass);
 
         // Create a transporter using SMTP or any email service
         const transporter = nodemailer.createTransport({
@@ -31,7 +33,7 @@ export default async function (req, res) {
                 text: message,
             });
 
-            return res.status(200).json({ message: 'Message sent successfully!' });
+            return res.status(200).json({ success: true, message: 'Message sent successfully!' });
         } catch (error) {
             console.error('Error sending email:', error);
             return res.status(500).json({ error: 'Failed to send message. Please try again.' });
