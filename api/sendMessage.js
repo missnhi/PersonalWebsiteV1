@@ -1,14 +1,8 @@
-// api/sendMessage.js
-
-const express = require('express');
 const nodemailer = require('nodemailer');
 
-const app = express();
-app.use(express.json());
-
-// Define the endpoint to handle the form submission
-app.post('/api/contactForm', async (req, res) => {
-    const { message } = req.body;
+export default async function (req, res) {
+    if (req.method === 'POST') {
+        const { message } = req.body;
 
         // Access environment variables
         const emailUser = process.env.EMAIL_USER;
@@ -18,14 +12,14 @@ app.post('/api/contactForm', async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'Gmail', // For example, using Gmail SMTP
             auth: {
-                user: emailUser, // env variable - Gmail address
-                pass: emailPass, // env variable - Gmail password
+                user: emailUser, // Gmail address from env variable
+                pass: emailPass, // Gmail password from env variable
             },
         });
 
         try {
             await transporter.sendMail({
-                from: 'nhi.phan.ley+anonymous@gmail.com',
+                from: 'nhi.phan.ley+anonymous@gmail.com', // Sender address
                 to: emailUser, // Your receiving email address
                 subject: 'New Anonymous Message',
                 text: message,
@@ -33,12 +27,12 @@ app.post('/api/contactForm', async (req, res) => {
 
             return res.status(200).json({ message: 'Message sent successfully!' });
         } catch (error) {
+            console.error('Error sending email:', error);
             return res.status(500).json({ error: 'Failed to send message. Please try again.' });
         }
-    });
-
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+    } else {
+        // Respond with 405 if the method is not POST
+        res.setHeader('Allow', ['POST']);
+        return res.status(405).end(`Method ${req.method} Not Allowed`);
+    }
+}
