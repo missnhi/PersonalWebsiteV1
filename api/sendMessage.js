@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 // Define the endpoint to handle the form submission
-app.post('/assets/api/contactForm', async (req, res) => {
+app.post('/api/contactForm', async (req, res) => {
     const { message } = req.body;
 
         // Access environment variables

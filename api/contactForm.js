@@ -3,7 +3,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
     const message = document.getElementById('message').value;
 
-    const response = await fetch('/assets/api/sendMessage', {
+    const response = await fetch('/api/sendMessage', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
