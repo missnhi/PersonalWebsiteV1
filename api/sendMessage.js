@@ -1,3 +1,9 @@
+/*
+SendMessage.js is a serverless function,
+designed to handle HTTP requests and send an email using nodemailer.
+
+ */
+
 const nodemailer = require('nodemailer');
 
 export default async function (req, res) {
