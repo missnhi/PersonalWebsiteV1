@@ -3,22 +3,34 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
     const message = document.getElementById('message').value;
 
-    const response = await fetch('../../api/sendMessage', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message }),
-    });
+    try {
+        // Send the message to the serverless function
+        const response = await fetch('/api/sendMessage', {  // Use the correct path to the API
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message }),
+        });
 
-    const result = await response.json();
+        // Check if the response is okay (status code 200-299)
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
 
-    // Display the result in the feedback message box
-    const feedbackMessageBox = document.getElementById('feedbackMessage');
-    if (result.success) {
-        feedbackMessageBox.textContent = 'Message sent successfully!';
-        feedbackMessageBox.style.color = 'green';
-    } else {
+        const result = await response.json();
+
+        // Display the result in the feedback message box
+        const feedbackMessageBox = document.getElementById('feedbackMessage');
+        if (result.success) {
+            feedbackMessageBox.textContent = 'Message sent successfully!';
+            feedbackMessageBox.style.color = 'green';
+        } else {
+            throw new Error(result.error || 'Failed to send the message.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        const feedbackMessageBox = document.getElementById('feedbackMessage');
         feedbackMessageBox.textContent = 'Failed to send the message. Please try again.';
         feedbackMessageBox.style.color = 'red';
     }

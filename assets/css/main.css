@@ -71,7 +71,7 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
-.feedback-message {
+.feedbackMessage {
     background-color: #f0ffff;
     border: 1px solid #b0c4de;
     padding: 10px;
@@ -80,7 +80,7 @@ input, select, textarea {
     color: #333;
 }
 
-.feedback-message p {
+.feedbackMessage p {
     margin: 0;
     font-size: 16px;
 }
